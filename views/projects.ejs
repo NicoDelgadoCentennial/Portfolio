@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+      </head>
+    <body>
+        <%- include('partials/navbar.ejs') %>
+        <section id="project" class="project-section">
+            <div class="container">
+            <h2>Projects</h2> 
+                <p class="project-description">Here you'll find some of the projects 
+                    I've worked on throughout these years, please feel free to check them 
+                    out.
+                </p>
+                <div class="sub-sections">
+                    <div class="sub-section">
+                    <h3>Visual Computing website</h3>
+                    <p>This is a project I worked on 2020 for one of my University classes. 
+                        The goal of this website was to implement javascript for image and video manipulation.
+                    </p>
+                    <a href="https://visualcomputing2020.github.io/" target="_blank" class="resume-link">Visual Computing Website</a>
+
+                    </div>
+                    <div class="sub-section">
+                        <h3>Toronto website</h3>
+                        <p>This is a project I worked on 2021 for one of my University classes as well. 
+                        The goal of this website was to explore html and css and create a simple website
+                        about a free topic.
+                        </p>
+                        <a href="https://nicky10.github.io/" target="_blank" class="resume-link">Toronto Website</a>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('partials/footer.ejs') %>
+    </body>
+</html>
