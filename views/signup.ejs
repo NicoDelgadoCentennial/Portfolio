@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sign Up</title> 
+        <link rel = "icon" href = "assets/Logo.png" type = "image/x-icon">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+      </head>
+<body class="backgroundbody">
+  <div class="container flex-container">
+    <div class="container">
+      <h2>Sign Up</h2>
+      <form id="signUpForm" action="/users" method="POST">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+  
+        <label for="userName">Username</label>
+        <input type="text" id="userName" name="userName" required>
+  
+        <label for="password">Password</label> 
+        <input type="password" id="password" name="password" required>
+  
+        <button type="submit" id="signUpButton">Sign up</button>
+      </form>
+      <p1><br><br>Already have an account? <a style="color: greenyellow;" href="../login">Log In.</a></p1>
+    </div>
+    <%- include('partials/footer.ejs') %>
+  </div>
+  
+</body>
+
+</html>

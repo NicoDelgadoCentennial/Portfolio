@@ -180,15 +180,21 @@
 }
 
 .navbar ul {
+  display: fixed;
+  list-style-type: none;
   list-style: none;
   margin: 0;
   padding: 0;
   color: #fff;
+  margin-left: auto; 
 }
 
 .navbar ul li {
   display: inline-block;
   margin-right: 5px;
+}
+.navbar ul li:last-child {
+  float: right;
 }
 
 .navbar ul li a {
@@ -508,7 +514,11 @@ ul li p {
 
 
 
-
+.login-section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #fff;
+}
 
 
 .services-container {
@@ -539,6 +549,17 @@ ul li p {
   margin-bottom: 20px;
 }
 
+html, body{
+  height: 100%;
+}
+
+.backgroundbody{
+  background-image: url('../assets/background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 150%;
+}
+
 .service-card h3 {
   font-size: 18px;
   margin-bottom: 10px;
@@ -547,4 +568,84 @@ ul li p {
 .service-card p {
   font-size: 14px;
   color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.flex-container {
+  flex-grow: 1;
+}
+
+.login-section .formstyle {
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 10px;
+  color: white;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px;
+  background-color: #428bca;
+  color: white;
+  border: none;
+}
+
+h2{
+  font-size: xx-large ;
+  color: white;
+  padding-top: 3%;
+  text-align: center;
+}
+
+p1{
+  color: white;
+  size: 12px;
+  padding-top: 1hv;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .about-section .container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-section .profile-image {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .about-section .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Log In</title> 
+        <link rel = "icon" href = "assets/Logo.png" type = "image/x-icon">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+      </head>
+<body class="backgroundbody">
+  <div class="container flex-container">
+    <div class="container">
+      <h2>Login</h2>
+      <form id="LogInForm" action="/users/userName" method="GET"> 
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+  
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+  
+        <button type="submit">Login</button>
+      </form>
+      <p1><br><br>Don't have an account yet? <a style="color: greenyellow;" href="../signup">Sign up.</a>><br><br>
+                  Or <a style="color: greenyellow;" href="../home">Continue as a guest</a></p1>
+    </div>
+    <%- include('partials/footer.ejs') %>
+  </div>
+  
+</body>
+
+</html>
