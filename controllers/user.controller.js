@@ -54,8 +54,8 @@ exports.create = (req, res) => {
 
 
 exports.findOne = (req, res) => {
-    const username = req.query.username;
-    const password = req.query.password;
+    const username = req.body.username;
+    const password = req.body.password;
   
     User.findOne({ userName: username })
       .then(user => {
