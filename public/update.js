@@ -37,7 +37,6 @@ window.location.href = '/business';
 
 cancelButton.addEventListener('click', event => {
 event.preventDefault(); // Prevent the default form submission
-deleteContact(id);
 window.location.href = '/business';
 });
 
