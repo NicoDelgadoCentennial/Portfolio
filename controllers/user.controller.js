@@ -54,6 +54,7 @@ exports.create = (req, res) => {
 
 
 exports.findOne = (req, res) => {
+  
     const username = req.body.username;
     const password = req.body.password;
   
@@ -76,12 +77,8 @@ exports.findOne = (req, res) => {
               });
             } else if (result) {
               // Passwords match
-              res.send(`
-                <script>
-                  alert('Sign-In successful! Welcome to my Portfolio.');
-                  window.location.href = '/home';
-                </script>
-              `);
+              req.session.user = { username: username};
+              res.redirect('/business');
             } else {
               // Passwords don't match
               res.send(`
@@ -103,6 +100,16 @@ exports.findOne = (req, res) => {
   };
   
 
+exports.findAll = (req, res) =>{
+  User.find().then(users => {
+      res.send(users)
+  }
+  ).catch(err => {
+      res.status(500).send({
+          'message' : 'Something went wrong!!', 'error' : err
+      })
+  })
+}
   
   
 

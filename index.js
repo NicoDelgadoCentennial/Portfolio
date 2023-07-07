@@ -3,11 +3,22 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 const path = require('path');
+const session = require('express-session');
+const requireLogin = require('./public/session_manager');
+
+app.use(session({
+  secret: 'portfolio',
+  resave: false,
+  saveUninitialized: false
+}));
+
+
 app.use(bodyParser.urlencoded({
   extended:true
 }))
 
 app.use(bodyParser.json())
+app.use(express.static('public'));
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
@@ -41,35 +52,52 @@ app.get('/', (req, res) => {
   res.render('login');
 });
 // Route for the sign up page
-app.get('/signup', (req, res) => {
+app.get('/signup', requireLogin, (req, res) => {
   res.render('signup');
 });
+// Route for the sign up page
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/login');
+});
+// Route for the home page
+app.get('/home', requireLogin, (req, res) => {
+  res.render('home');
+});
 
-  app.get('/home', (req, res) => {
-    res.render('home');
-  });
   
   // Route for the about page
-  app.get('/about', (req, res) => {
+  app.get('/about', requireLogin, (req, res) => {
     res.render('about');
   });
   
   // Route for the projects page
-  app.get('/projects', (req, res) => {
+  app.get('/projects', requireLogin, (req, res) => {
     res.render('projects');
   });
   
   // Route for the services page
-  app.get('/services', (req, res) => {
+  app.get('/services', requireLogin, (req, res) => {
     res.render('services');
   });
   
   // Route for the contact page
-  app.get('/contact', (req, res) => {
+  app.get('/contact', requireLogin, (req, res) => {
     res.render('contact');
   });
 
+  // Route for the business contact page
+  app.get('/business', requireLogin, (req, res) => {
+    res.render('business');
+  });
+
+  //route for the update view
+  app.get('/update', requireLogin, (req, res) => {
+    res.render('update');
+  });
+
   require('./routes/user.route.js')(app);
+  require('./routes/contact.route.js')(app);
 
 // Start the server
 app.listen(port, () => {

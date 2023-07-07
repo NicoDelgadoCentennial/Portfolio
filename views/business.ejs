@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Business Contacts</title> 
+        <link rel = "icon" href = "assets/Logo.png" type = "image/x-icon">
+        <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    </head>
+    <body>
+    <%- include('partials/navbar.ejs') %>
+    <div class="contact-container">
+        <h2>Business Contacts</h2>
+        <table id="contactsTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="contactsBody">
+              
+            </tbody>
+          </table>
+        <script src="business.js"></script>
+    </div>
+    <%- include('partials/footer.ejs') %>
+    </body>
+</html>
