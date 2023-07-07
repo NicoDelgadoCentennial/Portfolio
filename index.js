@@ -52,7 +52,7 @@ app.get('/', (req, res) => {
   res.render('login');
 });
 // Route for the sign up page
-app.get('/signup', requireLogin, (req, res) => {
+app.get('/signup', (req, res) => {
   res.render('signup');
 });
 // Route for the sign up page
