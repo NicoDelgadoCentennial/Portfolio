@@ -95,9 +95,15 @@ app.get('/home', requireLogin, (req, res) => {
   app.get('/update', requireLogin, (req, res) => {
     res.render('update');
   });
+  //send contact message to database
+  app.post('/contact_info', (req, res) => {
+    const { firstName, lastName, phone, email, message } = req.body;
+    res.json({ message: 'Contact form submitted successfully' });
+  });
 
   require('./routes/user.route.js')(app);
   require('./routes/contact.route.js')(app);
+  require('./routes/contact_info.route.js')(app);
 
 // Start the server
 app.listen(port, () => {

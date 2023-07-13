@@ -78,7 +78,7 @@ exports.findOne = (req, res) => {
             } else if (result) {
               // Passwords match
               req.session.user = { username: username};
-              res.redirect('/business');
+              res.redirect('/home');
             } else {
               // Passwords don't match
               res.send(`
