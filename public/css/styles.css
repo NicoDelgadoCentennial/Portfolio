@@ -193,9 +193,10 @@
   display: inline-block;
   margin-right: 5px;
 }
+/*
 .navbar ul li:last-child {
   float: right;
-}
+}*/
 
 .navbar ul li a {
   text-decoration: none;

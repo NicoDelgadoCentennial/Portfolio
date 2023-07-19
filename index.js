@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
@@ -49,7 +50,7 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 app.get('/', (req, res) => {
-  res.render('login');
+  res.render('home');
 });
 // Route for the sign up page
 app.get('/signup', (req, res) => {
@@ -61,44 +62,52 @@ app.get('/logout', (req, res) => {
   res.redirect('/login');
 });
 // Route for the home page
-app.get('/home', requireLogin, (req, res) => {
+app.get('/home', /*requireLogin, */(req, res) => {
   res.render('home');
 });
 
   
   // Route for the about page
-  app.get('/about', requireLogin, (req, res) => {
+  app.get('/about', /*requireLogin, */(req, res) => {
     res.render('about');
   });
   
   // Route for the projects page
-  app.get('/projects', requireLogin, (req, res) => {
+  app.get('/projects', /*requireLogin, */(req, res) => {
     res.render('projects');
   });
   
   // Route for the services page
-  app.get('/services', requireLogin, (req, res) => {
+  app.get('/services', /*requireLogin, */(req, res) => {
     res.render('services');
   });
   
   // Route for the contact page
-  app.get('/contact', requireLogin, (req, res) => {
+  app.get('/contact', /*requireLogin, */(req, res) => {
     res.render('contact');
   });
 
   // Route for the business contact page
-  app.get('/business', requireLogin, (req, res) => {
+  app.get('/business', /*requireLogin, */(req, res) => {
     res.render('business');
   });
 
   //route for the update view
-  app.get('/update', requireLogin, (req, res) => {
+  app.get('/update', /*requireLogin, */(req, res) => {
     res.render('update');
   });
   //send contact message to database
-  app.post('/contact_info', (req, res) => {
-    const { firstName, lastName, phone, email, message } = req.body;
-    res.json({ message: 'Contact form submitted successfully' });
+  app.post('/contacts_info', (req, res) => {
+    const contactInfo  = req.body;
+    axios.post('https://mail-microservice-uyd9.onrender.com/contacts_info', contactInfo)
+    .then(response => {
+      console.log(response.data);
+      res.render('contact');
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).json({ message: 'Error communicating with the microservice' });
+    });
   });
 
   require('./routes/user.route.js')(app);
